@@ -131,24 +131,74 @@ exports.editCmd = (rl, id) => {
 
 
 /**
- * Prueba un quiz, es decir, hace una pregunta del modelo a la que debemos contestar.
- * 
- * @param id Clave del quiz a probar.
- */
+* Prueba un quiz, es decir, hace una pregunta del modelo a la que debemos contestar.
+*
+* @param id Clave del quiz a probar.
+*/
 exports.testCmd = (rl, id) => {
-  log('Probar el quiz indicado.', 'red');
-  rl.prompt();
+//log('Probar el quiz indicado.', 'red');
+if (typeof id === "undefined") {
+errorlog(`Falta el parámetro id.`);
+rl.prompt();
+} else {
+try{
+const quiz = model.getByIndex(id);
+rl.question(colorize(quiz.question+"? ", 'red'), answer => {
+if (quiz.answer.toLowerCase().trim() === answer.toLowerCase().trim()){
+log("La respuesta es correcta.", 'green');
+biglog('CORRECTO', 'green');
+rl.prompt();
+} else{
+log("La respuesta es incorrecta.", 'red');
+biglog('INCORRECTO', 'red');
+rl.prompt();
 }
-
-
+});
+} catch(error) {
+errorlog(error.message);
+rl.prompt();
+}
+}
+};
 /**
- * Pregunta todos los quizzes existentes en el modelo en orden aleatorio.
- * Se gana si se contesta a todos satisfactoriamente.
- */
- exports.playCmd = rl => {
-   log('Jugar.', 'red');
-   rl.prompt();
- };
+* Pregunta todos los quizzes existentes en el modelo en orden aleatorio.
+* Se gana si se contesta a todos satisfactoriamente.
+*/
+exports.playCmd = rl => {
+//log('Jugar.', 'red');
+let score = 0;
+let toBeResolved = [];
+for(let i=0; i<model.count(); i++){
+toBeResolved[i] = model.getByIndex(i);
+};
+const playOne = () => {
+if(toBeResolved.length === 0) {
+log("No hay más preguntas.");
+log("Fin del juego. Aciertos: " + score);
+biglog(score, 'magenta');
+score = 0;
+rl.prompt();
+} else {
+let ir = Math.random() * (toBeResolved.length - 1);
+let id = Math.round(ir);
+rl.question(colorize(toBeResolved[id].question+"? ", 'red'), answer => {
+if(toBeResolved[id].answer.toLowerCase().trim() === answer.toLowerCase().trim()){
+score++;
+log('CORRECTO - Total '+ score + ' aciertos.', 'green');
+toBeResolved.splice(id, 1);
+playOne();
+} else {
+log('INCORRECTO.', 'red');
+log("Fin del juego. Aciertos: " + score);
+biglog(score, 'magenta');
+score = 0;
+rl.prompt();
+}
+});
+}
+}
+playOne();
+}; 
  
  
  /**
