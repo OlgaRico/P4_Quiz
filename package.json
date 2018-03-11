@@ -13,7 +13,7 @@
     "core",
     "node"
   ],
-  "author": "Maria",
+  "author": "Lucía y Olga",
   "license": "Unlicense",
   "dependencies": {
     "chalk": "^2.3.1",
@@ -23,10 +23,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mariagvaliente/P3_Quiz.git"
+    "url": "git+https://github.com/OlgaRico/P3_Quiz.git"
   },
   "bugs": {
-    "url": "https://github.com/mariagvaliente/P3_Quiz/issues"
+    "url": "https://github.com/OlgaRico/P3_Quiz/issues"
   },
-  "homepage": "https://github.com/mariagvaliente/P3_Quiz#readme"
+  "homepage": "https://github.com/OlgaRico/P3_Quiz#readme"
 }
