@@ -1,3 +1,4 @@
+
 {
   "name": "quiz",
   "version": "1.0.0",
@@ -12,10 +13,20 @@
     "core",
     "node"
   ],
-  "author": "Lucia Martin Perez & Olga Rico Diez",
+  "author": "Maria",
   "license": "Unlicense",
   "dependencies": {
     "chalk": "^2.3.1",
-    "figlet": "^1.2.0"
-  }
+    "figlet": "^1.2.0",
+    "sequelize": "^4.35.2",
+    "sqlite3": "^3.1.13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariagvaliente/P3_Quiz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mariagvaliente/P3_Quiz/issues"
+  },
+  "homepage": "https://github.com/mariagvaliente/P3_Quiz#readme"
 }
