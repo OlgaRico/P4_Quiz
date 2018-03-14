@@ -281,13 +281,13 @@ exports.testCmd = (rl, id) => {
 						if ( a.toLocaleLowerCase() === quiz.answer.toLocaleLowerCase()){
 							score++;
 							log("RESPUESTA CORRECTA");
-							log('CORRECTO - Total '+ score + ' aciertos.', 'green');
+							log(`Lleva ${score} aciertos.`);
 							toBeResolved.splice(rand,1);
 							playOne();
 						}else{
 							log("RESPUESTA INCORRECTA");
 							log('Fin del juego.');
-							log("Fin del juego. Aciertos: " + score);
+							log(`Aciertos: ${score}`);
 							biglog(score,'magenta');
 							rl.prompt();
 						}
