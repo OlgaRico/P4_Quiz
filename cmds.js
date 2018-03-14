@@ -284,6 +284,7 @@ exports.testCmd = (rl, id) => {
 							log(`Lleva ${score} aciertos.`);
 							toBeResolved.splice(rand,1);
 							playOne();
+							
 						}else{
 							log("RESPUESTA INCORRECTA");
 							log('Fin del juego.');
