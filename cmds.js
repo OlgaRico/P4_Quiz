@@ -298,7 +298,7 @@ exports.testCmd = (socket, rl, id) => {
 					errorlog(socket, error.message);
 				})
 				.then(() => {
-					log(socket, "Fin.");
+					//log(socket, "Fin.");
 					rl.prompt();
 				});
 			}
