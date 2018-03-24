@@ -325,4 +325,5 @@ exports.creditsCmd = (socket, rl) => {
 exports.quitCmd = (socket, rl) => {
   rl.close();
   socket.end();
+  rl.prompt();
 }
